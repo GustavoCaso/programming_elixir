@@ -25,7 +25,7 @@ defmodule HotelRoom do
   end
 end
 
-people |> Enum.each(&HotelRoom/1)
+people |> Enum.each(&HotelRoom.book/1)
 
 # Structs
 

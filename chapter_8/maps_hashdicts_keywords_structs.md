@@ -4,7 +4,7 @@ A dictionary is a data type that associates keys with values.
 
 How to use the appropriate dictionary for a particulat need?
 
-*Keyword* If you are going to have same key
+*Keyword* If you are going to have same key, more than one
 *Keyword* If you want to garantee ordered elements
 *Map* If you want to do pattern matching againts the content
 *HashDict* If you are going to store hundreds of entries
