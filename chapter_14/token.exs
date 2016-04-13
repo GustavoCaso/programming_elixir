@@ -4,22 +4,15 @@ defmodule TokenSender do
    pid2 = spawn(TokenSender, :reply, [])
    send pid1, { self, token1 }
    send pid2, { self, token2 }
-   receive do
-     message -> IO.puts message
-   end
-
-   receive do
-     message -> IO.puts message
-   end
-   # await
+   await
   end
 
-  # def await do
-  #   receive do
-  #     message -> IO.puts message
-  #     await
-  #   end
-  # end
+  def await do
+    receive do
+      message -> IO.puts message
+    end
+    await
+  end
 
   def reply do
     receive do
