@@ -1,22 +1,24 @@
 defmodule TokenSender do
   def run(token1, token2) do
-   pid1 = spawn(TokenSender, :reply, [])
-   pid2 = spawn(TokenSender, :reply, [])
-   send pid1, { self, token1 }
-   send pid2, { self, token2 }
-   await
+    comunicate(token1)
+    comunicate(token2)
+  end
+
+  def comunicate(token) do
+    p = spawn(TokenSender, :reply, [self])
+    send p, token
+    await
   end
 
   def await do
     receive do
       message -> IO.puts message
     end
-    await
   end
 
-  def reply do
+  def reply(pid) do
     receive do
-      {pid, message} -> send pid, "This is the message #{message}"
+      message -> send pid, "This is the message #{message}"
     end
   end
 end
